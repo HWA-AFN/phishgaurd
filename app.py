@@ -8,6 +8,15 @@ import requests
 from flask import Flask, jsonify, render_template, request
 
 app = Flask(__name__)
+
+@app.route("/robots.txt")
+def robots_txt():
+    return (
+        "User-agent: *\n"
+        "Allow: /\n",
+        200,
+        {"Content-Type": "text/plain"}
+    )
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024  # Small JSON requests only.
 
 SHORTENERS = {"bit.ly", "tinyurl.com", "t.co", "goo.gl", "ow.ly", "is.gd", "buff.ly", "cutt.ly", "rb.gy"}
