@@ -238,6 +238,8 @@ def scan():
 @app.get("/health")
 def health():
     return jsonify({"status": "ok", "engine": "phishguard-feather-v1"})
+
+
 @app.route("/robots.txt")
 def robots():
     return "User-agent: *\nAllow: /\n", 200, {
