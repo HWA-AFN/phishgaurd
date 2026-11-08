@@ -238,7 +238,11 @@ def scan():
 @app.get("/health")
 def health():
     return jsonify({"status": "ok", "engine": "phishguard-feather-v1"})
-
+@app.route("/robots.txt")
+def robots():
+    return "User-agent: *\nAllow: /\n", 200, {
+        "Content-Type": "text/plain"
+    }
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000, debug=True)
